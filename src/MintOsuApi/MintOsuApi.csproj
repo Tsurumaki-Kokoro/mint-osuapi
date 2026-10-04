@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>MintOsuApi</RootNamespace>
+  </PropertyGroup>
+
+  <!-- NuGet 包元数据 -->
+  <PropertyGroup>
+    <PackageId>MintOsuAPI</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Tsurumaki-kokoro</Authors>
+    <Description>osu! API client for .NET — v2 (OAuth2) and legacy v1 (API key), with on-disk token caching and legacy score compatibility.</Description>
+    <PackageTags>osu;osu!;api;oauth;client;osu-api-v2;osu-api-v1</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Copyright>Copyright (c) 2026 Tsurumaki-kokoro</Copyright>
+    <!-- DTO 模型未逐属性注释，CS1591 会产生数千条噪音；入口点的注释照常输出到 XML -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <!-- 仓库信息（SourceLink 靠 RepositoryUrl 反查源码位置） -->
+  <PropertyGroup>
+    <RepositoryUrl>https://github.com/Tsurumaki-Kokoro/mint-osuapi</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/Tsurumaki-Kokoro/mint-osuapi</PackageProjectUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- README 位于仓库根，GitHub 与 NuGet 共用一份 -->
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="IdentityModel" Version="7.0.0" />
+  </ItemGroup>
+
+</Project>

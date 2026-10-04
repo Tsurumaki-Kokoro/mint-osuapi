@@ -1,0 +1,24 @@
+# 构建产物
+bin/
+obj/
+*.user
+*.suo
+
+# IDE
+.vs/
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
+
+# 本地凭据（契约验证工具使用）
+appsettings.Development.json
+
+# 契约验证产物：原始响应、令牌缓存、回放报告
+cache/
+
+# 包产物
+*.nupkg
+*.snupkg
+artifacts/
