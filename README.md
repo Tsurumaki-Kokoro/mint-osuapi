@@ -3,7 +3,7 @@
 **简体中文** | [English](README.en.md)
 
 [![.NET 8+](https://img.shields.io/badge/.NET-8%2B-512BD4)](src/MintOsuApi/MintOsuApi.csproj) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-MintOsuAPI 是一个面向 .NET 的 osu! API 客户端，为机器人、桌面应用和后端服务提供强类型的数据访问接口。从 MintAPI 抽离，可独立使用。
+MintOsuAPI 是一个面向 .NET 的 osu! API 客户端，为机器人、桌面应用和后端服务提供强类型的数据访问接口。从 [MintAPI](https://github.com/Tsurumaki-Kokoro/MintAPI) 抽离，可独立使用。
 
 ## 特性
 

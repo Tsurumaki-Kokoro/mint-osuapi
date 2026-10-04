@@ -3,7 +3,7 @@
 [简体中文](README.md) | **English**
 
 [![.NET 8+](https://img.shields.io/badge/.NET-8%2B-512BD4)](src/MintOsuApi/MintOsuApi.csproj) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-MintOsuAPI is a .NET client for the osu! API, providing strongly typed data access for bots, desktop applications, and backend services. Extracted from MintAPI, it can be used independently.
+MintOsuAPI is a .NET client for the osu! API, providing strongly typed data access for bots, desktop applications, and backend services. Extracted from [MintAPI](https://github.com/Tsurumaki-Kokoro/MintAPI), it can be used independently.
 
 ## Features
 
