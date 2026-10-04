@@ -1,0 +1,87 @@
+name: Publish to NuGet
+run-name: Publish MintOsuAPI ${{ inputs.version }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Package version (for example 0.1.0 or 0.2.0-beta.1)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-nuget
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      PACKAGE_VERSION: ${{ inputs.version }}
+      NUGET_USER: ${{ vars.NUGET_USER }}
+
+    steps:
+      - name: Validate publishing inputs
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os
+          import re
+          import sys
+
+          version = os.environ['PACKAGE_VERSION']
+          number = r'(?:0|[1-9][0-9]*)'
+          identifier = rf'(?:{number}|[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*)'
+          pattern = rf'{number}\.{number}\.{number}(?:-{identifier}(?:\.{identifier})*)?'
+          if not re.fullmatch(pattern, version):
+              sys.exit('::error::Use a version such as 0.1.0 or 0.2.0-beta.1, without a v prefix or build metadata.')
+          if not os.environ['NUGET_USER'].strip():
+              sys.exit('::error::Set the NUGET_USER repository variable to your NuGet.org profile name.')
+          PY
+
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            9.0.x
+
+      - name: Restore
+        run: dotnet restore MintOsuApi.sln
+
+      - name: Build
+        run: dotnet build MintOsuApi.sln -c Release --no-restore -p:Version="$PACKAGE_VERSION"
+
+      - name: Test
+        run: dotnet test MintOsuApi.sln -c Release --no-build --no-restore
+
+      - name: Pack
+        run: >-
+          dotnet pack src/MintOsuApi/MintOsuApi.csproj
+          -c Release --no-build --no-restore
+          -p:Version="$PACKAGE_VERSION"
+          -o "$RUNNER_TEMP/nuget-package"
+
+      - name: Sign in to NuGet with Trusted Publishing
+        uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: ${{ vars.NUGET_USER }}
+
+      - name: Publish package
+        env:
+          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
+        run: >-
+          dotnet nuget push "$RUNNER_TEMP/nuget-package/"*.nupkg
+          --api-key "$NUGET_API_KEY"
+          --source https://api.nuget.org/v3/index.json

@@ -130,6 +130,8 @@ v2 收到非成功 HTTP 状态码时，会先抛出 `HttpRequestException`，不
 
 方法签名和 XML 注释可在 IDE 中查看。是否能调用某个接口取决于令牌的授权方式和范围。
 
+[NuGet 发布指南](docs/publishing.md)：手动填写版本号，通过 GitHub Actions 测试、打包并直接上传。
+
 ## 本地开发
 
 库与测试目标框架为 .NET 8，契约验证工具为 .NET 9。构建整个解决方案需要 .NET 9 SDK 或更高版本，并安装 .NET 8 运行时以运行测试。

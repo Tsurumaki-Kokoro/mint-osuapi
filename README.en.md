@@ -150,6 +150,8 @@ across endpoints.
 
 Method signatures and XML comments are available in your IDE. Access to an endpoint depends on the token grant and scopes.
 
+[NuGet publishing guide](docs/publishing.md): manually enter a version to test, pack, and publish directly through GitHub Actions.
+
 ## Development
 
 The library and tests target .NET 8; the contract validation tool targets .NET 9. Building the full solution requires the .NET 9 SDK or later, plus the .NET 8 runtime to run tests.
