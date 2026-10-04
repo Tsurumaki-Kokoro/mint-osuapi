@@ -3,7 +3,7 @@
 **简体中文** | [English](README.en.md)
 
 [![.NET 8+](https://img.shields.io/badge/.NET-8%2B-512BD4)](src/MintOsuApi/MintOsuApi.csproj) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-MintOsuAPI 是一个面向 .NET 的 osu! API 客户端，为机器人、桌面应用和后端服务提供强类型的数据访问接口。从 HitCircleAPI 抽离，可独立使用。
+MintOsuAPI 是一个面向 .NET 的 osu! API 客户端，为机器人、桌面应用和后端服务提供强类型的数据访问接口。从 MintAPI 抽离，可独立使用。
 
 ## 特性
 
@@ -14,7 +14,7 @@ MintOsuAPI 是一个面向 .NET 的 osu! API 客户端，为机器人、桌面�
 - **数据兼容**：处理新旧成绩字段、不同 Mods 格式和多态响应。
 - **自定义 HTTP**：可传入预先配置的 `HttpClient`。
 
-目标框架为 **.NET 8**，支持 .NET 8 及更高版本。库本身不依赖 HitCircleAPI、数据库、Redis 或浏览器。
+目标框架为 **.NET 8**，支持 .NET 8 及更高版本。库本身不依赖 MintAPI、数据库、Redis 或浏览器。
 
 ## 安装
 

@@ -3,7 +3,7 @@
 [简体中文](README.md) | **English**
 
 [![.NET 8+](https://img.shields.io/badge/.NET-8%2B-512BD4)](src/MintOsuApi/MintOsuApi.csproj) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-MintOsuAPI is a .NET client for the osu! API, providing strongly typed data access for bots, desktop applications, and backend services. Extracted from HitCircleAPI, it can be used independently.
+MintOsuAPI is a .NET client for the osu! API, providing strongly typed data access for bots, desktop applications, and backend services. Extracted from MintAPI, it can be used independently.
 
 ## Features
 
@@ -14,7 +14,7 @@ MintOsuAPI is a .NET client for the osu! API, providing strongly typed data acce
 - **Payload compatibility** — Modern and legacy score fields, multiple Mods formats, and polymorphic responses.
 - **Custom HTTP** — Accepts a pre-configured `HttpClient`.
 
-Targets **.NET 8** and supports .NET 8 or later. The library does not depend on HitCircleAPI, a database, Redis, or a browser.
+Targets **.NET 8** and supports .NET 8 or later. The library does not depend on MintAPI, a database, Redis, or a browser.
 
 ## Installation
 
